@@ -6,11 +6,11 @@ import java.util.List;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import api.myappapi.student.Student;
-
 
 @SpringBootApplication
 @RestController // Serves REST endpoints
@@ -21,15 +21,14 @@ public class MyAppApiApplication {
 	}
 
 	@GetMapping // REST endpoint
+	@CrossOrigin(origins = "http://localhost:3000")
 	public List<Student> hello() {
 		return List.of(
-			new Student(
-				1L, 
-				"miriam", 
-				"miriam@gmail.com", 
-				LocalDate.of(2000, Month.JANUARY, 5), 
-				18
-			)
-		);
+				new Student(
+						1L,
+						"miriam",
+						"miriam@gmail.com",
+						LocalDate.of(2000, Month.JANUARY, 5),
+						18));
 	}
 }
